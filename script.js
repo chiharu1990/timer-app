@@ -1,4 +1,4 @@
-let remainingTime = 300;
+let remainingTime = 0;
 let timerIntervalId = null;
 
 // タイマーの関数
@@ -16,9 +16,28 @@ const countdown = () => {
     document.getElementById("timer-display").textContent = `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   } else {
     clearInterval(timerIntervalId);
+    timerIntervalId = null;
     console.log("タイマー終了");
   }
 }
 
+// タイマーの存在を確認して動いていたら止める関数
+const clearTimer = () => {
+  if (timerIntervalId !== null) {
+    clearInterval(timerIntervalId);
+    timerIntervalId = null;
+  };
+}
+
 // イベント登録
-document.getElementById("start-btn").addEventListener("click", timer);
+document.getElementById("timer-fiveMinutes").addEventListener("click", () => {
+  clearTimer();
+  remainingTime = 300;
+  timer();
+});
+
+document.getElementById("timer-tenMinutes").addEventListener("click", () => {
+  clearTimer();
+  remainingTime = 600;
+  timer();
+});
