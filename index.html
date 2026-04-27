@@ -4,15 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>タイマーアプリ</title>
-  <!-- <link rel="stylesheet" href="style.css"> -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <h1>タイマー</h1>
   <p id="timer-display">00:00</p>
-  <button id="timer-fiveMinutes">5分タイマースタート</button>
-  <button id="timer-tenMinutes">10分タイマースタート</button>
+  <div class="timer-select">
+    <button id="timer-fiveMinutes">5分タイマースタート</button>
+    <button id="timer-tenMinutes">10分タイマースタート</button>
+  </div>
 
+  <div class="repetition">
+    <button id="timer-repetition">繰り返す</button>
+    <button id="repetition-fiveMinutes">5分やる</button>
+    <button id="repetition-tenMinutes">10分やる</button>
+    <button>今日はもう終わる</button>
+  </div>
 
   <script src="script.js"></script>
 </body>

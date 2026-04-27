@@ -1,0 +1,11 @@
+.repetition {
+  display: none;
+}
+
+.repetition.is-visible {
+  display: block;
+}
+
+.timer-select.is-hidden {
+  display: none;
+}
