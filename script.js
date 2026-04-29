@@ -1,17 +1,16 @@
 let remainingTime = 0;
 let lastSelectRemainingTime = 0;
 let timerIntervalId = null;
+let totalSetCount = 0;
+let totalTime = 0;
 const repetition = document.querySelector(".repetition");
+const timerDisplay = document.getElementById("timer-display");
 const timerSelect = document.querySelector(".timer-select");
+const end =  document.querySelector(".end-display");
+const setCountDisplay = document.getElementById("setCount-display");
+const totalTimeDisplay = document.getElementById("totalTime-display");
 const isVisibleClass = "is-visible";
 const isHiddenClass = "is-hidden";
-
-// タイマーをセットする関数
-const timer = () => {
-  if (timerIntervalId !== null) return;
-  timerIntervalId = setInterval(countdown, 1000);
-  timerSelect.classList.add(isHiddenClass);
-}
 
 // タイマーの形式でカウントダウンする関数
 const countdown = () => {
@@ -21,6 +20,8 @@ const countdown = () => {
   } else {
     clearInterval(timerIntervalId);
     timerIntervalId = null;
+    totalSetCount += 1;
+    totalTime += lastSelectRemainingTime;
     console.log("タイマー終了");
     repetition.classList.add(isVisibleClass);
     timerSelect.classList.add(isHiddenClass);
@@ -48,17 +49,18 @@ const startTimer = (seconds) => {
   remainingTime = seconds;
   lastSelectRemainingTime = seconds;
   timeSeparate(seconds);
-  timer();
+  timerIntervalId = setInterval(countdown, 1000);
+  timerSelect.classList.add(isHiddenClass);
   repetition.classList.remove(isVisibleClass);
 }
 
 // イベント登録
 document.getElementById("timer-fiveMinutes").addEventListener("click", () => {
-  startTimer(5);
+  startTimer(300);
 });
 
 document.getElementById("timer-tenMinutes").addEventListener("click", () => {
-  startTimer(10);
+  startTimer(600);
 });
 
 document.getElementById("timer-repetition").addEventListener("click", () => {
@@ -66,9 +68,26 @@ document.getElementById("timer-repetition").addEventListener("click", () => {
 });
 
 document.getElementById("repetition-fiveMinutes").addEventListener("click", () => {
-  startTimer(5);
+  startTimer(300);
 });
 
 document.getElementById("repetition-tenMinutes").addEventListener("click", () => {
-  startTimer(10);
+  startTimer(600);
+});
+
+document.getElementById("timer-end").addEventListener("click", () => {
+  const minutes = Math.floor(totalTime / 60);
+  repetition.classList.remove(isVisibleClass);
+  end.classList.add(isVisibleClass);
+  timerDisplay.classList.add(isHiddenClass);
+  setCountDisplay.textContent = `${totalSetCount}セット完了`;
+  totalTimeDisplay.textContent = `今日は${minutes}分集中しました！`;
+});
+
+document.getElementById("start-beginning").addEventListener("click", () => {
+  timerDisplay.classList.remove(isHiddenClass);
+  timerSelect.classList.remove(isHiddenClass);
+  end.classList.remove(isVisibleClass);
+  totalSetCount = 0;
+  totalTime = 0;
 });

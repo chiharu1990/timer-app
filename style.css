@@ -6,6 +6,18 @@
   display: block;
 }
 
+#timer-display.is-hidden {
+  display: none;
+}
+
 .timer-select.is-hidden {
   display: none;
+}
+
+.end-display {
+  display: none;
+}
+
+.end-display.is-visible {
+  display: block;
 }
