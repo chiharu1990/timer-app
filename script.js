@@ -3,6 +3,7 @@ let lastSelectRemainingTime = 0;
 let timerIntervalId = null;
 let totalSetCount = 0;
 let totalTime = 0;
+const head = document.querySelector(".head");
 const repetition = document.querySelector(".repetition");
 const timerDisplay = document.getElementById("timer-display");
 const timerSelect = document.querySelector(".timer-select");
@@ -11,6 +12,10 @@ const setCountDisplay = document.getElementById("setCount-display");
 const totalTimeDisplay = document.getElementById("totalTime-display");
 const isVisibleClass = "is-visible";
 const isHiddenClass = "is-hidden";
+
+const DEV_MODE = true; // テスト時はtrue、本番はfalse
+const FIVE_MIN = DEV_MODE ? 5 : 300;
+const TEN_MIN = DEV_MODE ? 10 : 600;
 
 // タイマーの形式でカウントダウンする関数
 const countdown = () => {
@@ -23,6 +28,7 @@ const countdown = () => {
     totalSetCount += 1;
     totalTime += lastSelectRemainingTime;
     console.log("タイマー終了");
+    timerDisplay.classList.remove(isVisibleClass);
     repetition.classList.add(isVisibleClass);
     timerSelect.classList.add(isHiddenClass);
   }
@@ -50,17 +56,20 @@ const startTimer = (seconds) => {
   lastSelectRemainingTime = seconds;
   timeSeparate(seconds);
   timerIntervalId = setInterval(countdown, 1000);
+  head.classList.add(isHiddenClass);
+  timerDisplay.classList.add(isVisibleClass);
   timerSelect.classList.add(isHiddenClass);
   repetition.classList.remove(isVisibleClass);
+
 }
 
 // イベント登録
 document.getElementById("timer-fiveMinutes").addEventListener("click", () => {
-  startTimer(300);
+  startTimer(FIVE_MIN);
 });
 
 document.getElementById("timer-tenMinutes").addEventListener("click", () => {
-  startTimer(600);
+  startTimer(TEN_MIN);
 });
 
 document.getElementById("timer-repetition").addEventListener("click", () => {
@@ -68,11 +77,11 @@ document.getElementById("timer-repetition").addEventListener("click", () => {
 });
 
 document.getElementById("repetition-fiveMinutes").addEventListener("click", () => {
-  startTimer(300);
+  startTimer(FIVE_MIN);
 });
 
 document.getElementById("repetition-tenMinutes").addEventListener("click", () => {
-  startTimer(600);
+  startTimer(TEN_MIN);
 });
 
 document.getElementById("timer-end").addEventListener("click", () => {
@@ -85,6 +94,7 @@ document.getElementById("timer-end").addEventListener("click", () => {
 });
 
 document.getElementById("start-beginning").addEventListener("click", () => {
+  head.classList.remove(isHiddenClass);
   timerDisplay.classList.remove(isHiddenClass);
   timerSelect.classList.remove(isHiddenClass);
   end.classList.remove(isVisibleClass);

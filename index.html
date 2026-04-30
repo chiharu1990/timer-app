@@ -3,31 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>タイマーアプリ</title>
-  <link rel="stylesheet" href="style.css">
+  <title>とりあえず５分タイマー</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Zen+Kaku+Gothic+New:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="container">
+    <div class="head">
+      <p class="head-txt">とりあえず、はじめよう</p>
+      <h1 class="head-title">５分タイマー</h1>
+      <p class="head-txt">まず、何分やる？</p>
+    </div>
 
-  <h1>タイマー</h1>
-  <p id="timer-display">00:00</p>
-  <div class="timer-select">
-    <button id="timer-fiveMinutes">5分タイマースタート</button>
-    <button id="timer-tenMinutes">10分タイマースタート</button>
-  </div>
+    <p id="timer-display">00:00</p>
 
-  <div class="repetition">
-    <button id="timer-repetition">繰り返す</button>
-    <button id="repetition-fiveMinutes">5分やる</button>
-    <button id="repetition-tenMinutes">10分やる</button>
-    <button id="timer-end">今日はもう終わる</button>
-  </div>
+    <div class="timer-select">
+      <button id="timer-fiveMinutes" class="timer-btn">
+        <span class="txt">とりあえず、5分</span>
+        <span class="time">05:00</span>
+      </button>
+      <button id="timer-tenMinutes" class="timer-btn">
+        <span class="txt">一旦、10分</span>
+        <span class="time">10:00</span>
+      </button>
+    </div>
 
-  <div class="end-display">
-    <p>おつかれさま！</p>
-    <p id="setCount-display"></p>
-    <p id="totalTime-display"></p>
-    <p>また明日も頑張ろう〜！</p>
-    <button id="start-beginning">最初からはじめる</button>
+    <div class="repetition">
+      <button id="timer-repetition">繰り返す</button>
+      <button id="repetition-fiveMinutes">5分やる</button>
+      <button id="repetition-tenMinutes">10分やる</button>
+      <button id="timer-end">今日はもう終わる</button>
+    </div>
+
+    <div class="end-display">
+      <p>おつかれさま！</p>
+      <p id="setCount-display"></p>
+      <p id="totalTime-display"></p>
+      <p>また明日も頑張ろう〜！</p>
+      <button id="start-beginning">最初からはじめる</button>
+    </div>
   </div>
 
   <script src="script.js"></script>
