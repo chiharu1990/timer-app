@@ -8,24 +8,25 @@
 </head>
 <body>
   <div class="container">
-    <div class="head">
-      <p class="head-txt">とりあえず、はじめよう</p>
-      <h1 class="head-title">５分タイマー</h1>
-      <p class="head-txt">まず、何分やる？</p>
+    <div class="first-view">
+      <div class="head">
+        <p class="head-txt">とりあえず、はじめよう</p>
+        <h1 class="head-title">５分タイマー</h1>
+        <p class="head-txt">まず、何分やる？</p>
+      </div>
+      <div class="timer-select">
+        <button id="timer-fiveMinutes" class="timer-btn">
+          <span class="txt">とりあえず、5分</span>
+          <span class="time">05:00</span>
+        </button>
+        <button id="timer-tenMinutes" class="timer-btn">
+          <span class="txt">一旦、10分</span>
+          <span class="time">10:00</span>
+        </button>
+      </div>
     </div>
 
     <p id="timer-display">00:00</p>
-
-    <div class="timer-select">
-      <button id="timer-fiveMinutes" class="timer-btn">
-        <span class="txt">とりあえず、5分</span>
-        <span class="time">05:00</span>
-      </button>
-      <button id="timer-tenMinutes" class="timer-btn">
-        <span class="txt">一旦、10分</span>
-        <span class="time">10:00</span>
-      </button>
-    </div>
 
     <div class="repetition">
       <div class="head">
@@ -41,11 +42,18 @@
     </div>
 
     <div class="end-display">
-      <p>おつかれさま！</p>
-      <p id="setCount-display"></p>
-      <p id="totalTime-display"></p>
-      <p>また明日も頑張ろう〜！</p>
-      <button id="start-beginning">最初からはじめる</button>
+      <div class="head">
+        <p class="head-txt">おつかれさまでした</p>
+        <div class="setCount">
+          <p id="setCount-display" class="setCount-num">1</p>
+          <p class="setCount-txt">セット完了</p>
+        </div>
+        <p class="totalTime-txt">今日は合計<span id="totalTime-display" class="total-time">○分</span>集中しました</p>
+      </div>
+      <div class="beginning-area">
+        <p class="beginning-txt">また明日も頑張ろう〜！</p>
+        <button id="start-beginning" class="beginning-btn">最初からはじめる</button>
+      </div>
     </div>
   </div>
 

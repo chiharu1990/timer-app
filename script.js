@@ -3,11 +3,10 @@ let lastSelectRemainingTime = 0;
 let timerIntervalId = null;
 let totalSetCount = 0;
 let totalTime = 0;
-const head = document.querySelector(".head");
-const repetition = document.querySelector(".repetition");
+const firstView = document.querySelector(".first-view");
 const timerDisplay = document.getElementById("timer-display");
-const timerSelect = document.querySelector(".timer-select");
-const end =  document.querySelector(".end-display");
+const repetition = document.querySelector(".repetition");
+const endView =  document.querySelector(".end-display");
 const setCountDisplay = document.getElementById("setCount-display");
 const totalTimeDisplay = document.getElementById("totalTime-display");
 const isVisibleClass = "is-visible";
@@ -30,7 +29,6 @@ const countdown = () => {
     console.log("タイマー終了");
     timerDisplay.classList.remove(isVisibleClass);
     repetition.classList.add(isVisibleClass);
-    timerSelect.classList.add(isHiddenClass);
   }
 }
 
@@ -56,11 +54,9 @@ const startTimer = (seconds) => {
   lastSelectRemainingTime = seconds;
   timeSeparate(seconds);
   timerIntervalId = setInterval(countdown, 1000);
-  head.classList.add(isHiddenClass);
+  firstView.classList.add(isHiddenClass);
   timerDisplay.classList.add(isVisibleClass);
-  timerSelect.classList.add(isHiddenClass);
   repetition.classList.remove(isVisibleClass);
-
 }
 
 // イベント登録
@@ -87,17 +83,14 @@ document.getElementById("repetition-tenMinutes").addEventListener("click", () =>
 document.getElementById("timer-end").addEventListener("click", () => {
   const minutes = Math.floor(totalTime / 60);
   repetition.classList.remove(isVisibleClass);
-  end.classList.add(isVisibleClass);
-  timerDisplay.classList.add(isHiddenClass);
-  setCountDisplay.textContent = `${totalSetCount}セット完了`;
-  totalTimeDisplay.textContent = `今日は${minutes}分集中しました！`;
+  endView.classList.add(isVisibleClass);
+  setCountDisplay.textContent = totalSetCount;
+  totalTimeDisplay.textContent = `${minutes}分`;
 });
 
 document.getElementById("start-beginning").addEventListener("click", () => {
-  head.classList.remove(isHiddenClass);
-  timerDisplay.classList.remove(isHiddenClass);
-  timerSelect.classList.remove(isHiddenClass);
-  end.classList.remove(isVisibleClass);
+  firstView.classList.remove(isHiddenClass);
+  endView.classList.remove(isVisibleClass);
   totalSetCount = 0;
   totalTime = 0;
 });
