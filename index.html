@@ -26,9 +26,34 @@
       </div>
     </div>
 
-    <p id="timer-display">00:00</p>
+    <div class="timer-view">
+      <p class="timer-view__icon">取組中</p>
+      <div class="timer-container">
+        <div class="timer-display-container">
+          <p id="timer-display">00:00</p>
+          <p class="timer-view__time"><span>5</span>分間</p>
+        </div>
+        <div class="timer-view__progress-bar">
+          <svg viewBox="0 0 200 200" width="200" height="200" fill="none">
+            <!-- 背景となる円 -->
+            <circle cx="100" cy="100" r="95" stroke="lightgray" stroke-width="10"/>
+            <!-- 進捗を表す円 -->
+            <circle cx="100" cy="100" r="95" stroke="#0F6E56" stroke-width="10" stroke-dasharray="596.6 596.6" stroke-dashoffset="447.45" class="timer-view__progress-circle"/>
+          </svg>
+        </div>
+      </div>
+      <p class="timer-view__setCount">セット回数：<span>1</span>回目</p>
+      <button id="timer-pause" class="pause-btn">
+        <span class="pause-btn__icon">
+          <svg width="16" height="16">
+            <use href="/img/icons.svg#pause"/>
+          </svg>
+        </span>
+        <span class="pause-btn__txt">一時停止</span>
+      </button>
+    </div>
 
-    <div class="repetition">
+    <div class="repetition-view">
       <div class="head">
         <p class="head-txt">タイマー終了</p>
         <p class="head-title">おつかれさま！</p>
@@ -41,7 +66,7 @@
       </div>
     </div>
 
-    <div class="end-display">
+    <div class="end-view">
       <div class="head">
         <p class="head-txt">おつかれさまでした</p>
         <div class="setCount">

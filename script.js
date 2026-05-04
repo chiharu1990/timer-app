@@ -4,9 +4,9 @@ let timerIntervalId = null;
 let totalSetCount = 0;
 let totalTime = 0;
 const firstView = document.querySelector(".first-view");
-const timerDisplay = document.getElementById("timer-display");
-const repetition = document.querySelector(".repetition");
-const endView =  document.querySelector(".end-display");
+const timerView = document.querySelector(".timer-view");
+const repetitionView= document.querySelector(".repetition-view");
+const endView =  document.querySelector(".end-view");
 const setCountDisplay = document.getElementById("setCount-display");
 const totalTimeDisplay = document.getElementById("totalTime-display");
 const isVisibleClass = "is-visible";
@@ -27,8 +27,8 @@ const countdown = () => {
     totalSetCount += 1;
     totalTime += lastSelectRemainingTime;
     console.log("タイマー終了");
-    timerDisplay.classList.remove(isVisibleClass);
-    repetition.classList.add(isVisibleClass);
+    timerView.classList.remove(isVisibleClass);
+    repetitionView.classList.add(isVisibleClass);
   }
 }
 
@@ -55,8 +55,8 @@ const startTimer = (seconds) => {
   timeSeparate(seconds);
   timerIntervalId = setInterval(countdown, 1000);
   firstView.classList.add(isHiddenClass);
-  timerDisplay.classList.add(isVisibleClass);
-  repetition.classList.remove(isVisibleClass);
+  timerView.classList.add(isVisibleClass);
+  repetitionView.classList.remove(isVisibleClass);
 }
 
 // イベント登録
@@ -82,7 +82,7 @@ document.getElementById("repetition-tenMinutes").addEventListener("click", () =>
 
 document.getElementById("timer-end").addEventListener("click", () => {
   const minutes = Math.floor(totalTime / 60);
-  repetition.classList.remove(isVisibleClass);
+  repetitionView.classList.remove(isVisibleClass);
   endView.classList.add(isVisibleClass);
   setCountDisplay.textContent = totalSetCount;
   totalTimeDisplay.textContent = `${minutes}分`;

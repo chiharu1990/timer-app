@@ -12,7 +12,32 @@ body {
   min-height: 100vh;
   background-color: #1a1a1a;
   color: #e0e0e0;
-font-family: 'Noto Serif JP', serif;}
+  font-family: 'Noto Serif JP', serif;
+}
+
+button {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1.5px solid #e0e0e0;
+  background-color: #2a2a2a;
+  font-size: 18px;
+  font-weight: 700;
+  color: #e0e0e0;
+  cursor: pointer;
+  font-family: 'Noto Serif JP', serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+  border-color: #5DCAA5;
+  background-color: #f0f0f0;
+  color: #0F6E56;
+}
+
 
 .container {
   background-color: #2a2a2a;
@@ -64,49 +89,107 @@ font-family: 'Noto Serif JP', serif;}
   gap: 16px;
 }
 
-#timer-display {
-  font-size: 48px;
-  font-family: monospace;
-  font-weight: 700;
+.timer-btn .time{
+  color: #0F6E56;
+}
+
+.timer-view {
   display: none;
   width: 100%;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  gap: 32px;
 }
 
-#timer-display.is-visible{
+.timer-view.is-visible{
   display: flex;
 }
 
-button {
-  width: 100%;
-  padding: 1rem;
-  border-radius: 8px;
-  border: 1.5px solid #e0e0e0;
-  background-color: #2a2a2a;
-  font-size: 18px;
+.timer-view__icon {
+  color: #0F6E56;
+  font-size: 14px;
   font-weight: 700;
-  color: #e0e0e0;
-  cursor: pointer;
-  font-family: 'Noto Serif JP', serif;
+  background-color: #caeae2;
+  padding: 2px 16px;
+  border-radius: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+  justify-content: center;
+  gap: 4px;
 }
 
-button:hover {
-  border-color: #5DCAA5;
-  background-color: #f0f0f0;
-  color: #0F6E56;
+.timer-view__icon::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height:  8px;
+  background-color: #74c1ad;
+  border-radius: 100%;
 }
 
-.timer-btn .time{
-  color: #0F6E56;
+.timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
-.repetition {
+.timer-display-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+#timer-display {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.timer-view__time {
+  font-weight: 400;
+  color: #a1a1a1;
+  font-size: 14px;
+  text-align: center;
+}
+
+.timer-view__setCount {
+  font-weight: 400;
+  color: #a1a1a1;
+  font-size: 16px;
+}
+
+.timer-view__setCount span {
+  color: #e0e0e0;
+  padding: 0 4px;
+}
+
+.timer-view__progress-circle{
+  position: relative;
+  transform-origin: 50% 50%;
+  transform: rotate(-90deg);
+  border-radius: 10px;
+}
+
+.pause-btn {
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 12px;
+}
+
+.pause-btn__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.repetition-view {
   display: none;
   text-align: center;
   flex-direction: column;
@@ -115,7 +198,7 @@ button:hover {
   width: 100%;
 }
 
-.repetition.is-visible {
+.repetition-view.is-visible {
   display: flex;
 }
 
@@ -138,13 +221,11 @@ button:hover {
   grid-column: 1 / span 2;
 }
 
-
-
 .timer-select.is-hidden {
   display: none;
 }
 
-.end-display {
+.end-view {
   display: none;
   width: 100%;
   text-align: center;
@@ -152,7 +233,7 @@ button:hover {
   gap: 24px;
 }
 
-.end-display.is-visible {
+.end-view.is-visible {
   display: flex;
 }
 
