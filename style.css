@@ -170,7 +170,6 @@ button:hover {
   position: relative;
   transform-origin: 50% 50%;
   transform: rotate(-90deg);
-  border-radius: 10px;
 }
 
 .pause-btn {

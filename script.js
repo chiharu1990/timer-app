@@ -1,13 +1,18 @@
 let remainingTime = 0;
 let lastSelectRemainingTime = 0;
 let timerIntervalId = null;
+let setCount = 0;
+let timeCount = 0;
 let totalSetCount = 0;
 let totalTime = 0;
 const firstView = document.querySelector(".first-view");
 const timerView = document.querySelector(".timer-view");
+const timerViewTimeCount = document.getElementById("timer-view-timeCount");
+const timerViewSetCount = document.getElementById("timer-view-setCount");
+const progressCircle = document.querySelector(".timer-view__progress-circle");
 const repetitionView= document.querySelector(".repetition-view");
 const endView =  document.querySelector(".end-view");
-const setCountDisplay = document.getElementById("setCount-display");
+const totalSetCountDisplay = document.getElementById("totalSetCount-display");
 const totalTimeDisplay = document.getElementById("totalTime-display");
 const isVisibleClass = "is-visible";
 const isHiddenClass = "is-hidden";
@@ -21,6 +26,9 @@ const countdown = () => {
   if (remainingTime > 0){
     remainingTime -= 1;
     timeSeparate(remainingTime);
+    const circumference = 2 * Math.PI * 95;
+    const offset = circumference * (1 - (remainingTime / lastSelectRemainingTime));
+    progressCircle.style.strokeDashoffset = offset;
   } else {
     clearInterval(timerIntervalId);
     timerIntervalId = null;
@@ -54,6 +62,10 @@ const startTimer = (seconds) => {
   lastSelectRemainingTime = seconds;
   timeSeparate(seconds);
   timerIntervalId = setInterval(countdown, 1000);
+  setCount += 1;
+  timerViewTimeCount.textContent = seconds / 60;
+  timerViewSetCount.textContent = setCount;
+  progressCircle.style.strokeDashoffset = 0;
   firstView.classList.add(isHiddenClass);
   timerView.classList.add(isVisibleClass);
   repetitionView.classList.remove(isVisibleClass);
@@ -84,7 +96,7 @@ document.getElementById("timer-end").addEventListener("click", () => {
   const minutes = Math.floor(totalTime / 60);
   repetitionView.classList.remove(isVisibleClass);
   endView.classList.add(isVisibleClass);
-  setCountDisplay.textContent = totalSetCount;
+  totalSetCountDisplay.textContent = totalSetCount;
   totalTimeDisplay.textContent = `${minutes}分`;
 });
 
