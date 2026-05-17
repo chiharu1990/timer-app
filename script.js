@@ -5,6 +5,7 @@ let setCount = 0;
 let timeCount = 0;
 let totalSetCount = 0;
 let totalTime = 0;
+let isPaused =false;
 const firstView = document.querySelector(".first-view");
 const timerView = document.querySelector(".timer-view");
 const timerViewTimeCount = document.getElementById("timer-view-timeCount");
@@ -105,4 +106,23 @@ document.getElementById("start-beginning").addEventListener("click", () => {
   endView.classList.remove(isVisibleClass);
   totalSetCount = 0;
   totalTime = 0;
+  setCount = 0;
+  timeCount = 0;
+});
+
+document.getElementById("timer-pause").addEventListener("click", () => {
+  isPaused = !isPaused;
+
+  if(isPaused){
+    // 一時停止を押した時の処理
+    document.getElementsByClassName("pause-btn__txt")[0].textContent = "再開";
+    document.getElementsByClassName("toggle-icon")[0].setAttribute("href", "/img/icons.svg#play");
+    clearInterval(timerIntervalId);
+
+  } else {
+    // 再開の処理
+    document.getElementsByClassName("pause-btn__txt")[0].textContent = "一時停止";
+    document.getElementsByClassName("toggle-icon")[0].setAttribute("href", "/img/icons.svg#pause");
+    timerIntervalId = setInterval(countdown, 1000);
+  }
 });
