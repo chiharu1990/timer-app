@@ -18,7 +18,7 @@ const totalTimeDisplay = document.getElementById("totalTime-display");
 const isVisibleClass = "is-visible";
 const isHiddenClass = "is-hidden";
 
-const DEV_MODE = true; // テスト時はtrue、本番はfalse
+const DEV_MODE = false; // テスト時はtrue、本番はfalse
 const FIVE_MIN = DEV_MODE ? 5 : 300;
 const TEN_MIN = DEV_MODE ? 10 : 600;
 
